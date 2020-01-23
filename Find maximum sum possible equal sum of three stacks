@@ -40,7 +40,7 @@ int main(){
 			sum3+=arr3[i];
 		}
 		ll i=0 ,j=0, k=0 ;
-		while(sum1!=sum2 && sum2!=sum3){
+		while(sum1!=sum2 && sum2!=sum3 && i<n1 && j<n2 && k<n3){
 			ll mx = max({sum1 ,sum2 , sum3});
 			if(mx==sum1 ){
 				sum1-=arr1[i];
