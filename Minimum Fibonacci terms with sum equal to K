@@ -1,0 +1,50 @@
+// https://www.geeksforgeeks.org/minimum-fibonacci-terms-sum-equal-k/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+
+int main(){
+	mahakal();fast;
+
+	ll t;
+	cin>>t;
+	while(t--){
+		ll k ;
+		cin>>k;
+		vector<ll> vec;
+		vec.pb(0);vec.pb(1);vec.pb(1);
+		for(ll i=3;;i++){
+			vec.pb(vec[i-1]+vec[i-2]);
+			if(vec[i]>k){
+				break;
+			}
+		}
+		ll ans=0;
+		for(ll i=vec.size()-1;i>=1 ;i--){
+			if(k==0){
+				break;
+			}
+			// cerr<<vec[i]<<" ";
+			ans+=k/vec[i];
+			k%=vec[i];
+		}
+		cout<<ans<<endl;
+	}
+
+	return 0;
+}
