@@ -1,0 +1,62 @@
+// https://www.geeksforgeeks.org/find-maximum-sum-possible-equal-sum-three-stacks/
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+
+int main(){
+	mahakal();fast;
+
+	ll t;
+	cin>>t;
+	while(t--){
+		ll a , b ,c  ;
+		cin>>a>>b>>c;
+		ll arr1[a],arr2[b],arr3[c];
+		ll sum1=0 , sum2=0 ,sum3=0;
+		for(ll i=0;i<a;i++){
+			cin>>arr1[i];
+			sum1+=arr1[i];
+		}
+		for(ll i=0;i<b;i++){
+			cin>>arr2[i];
+			sum2+=arr2[i];
+		}
+		for(ll i=0;i<c;i++){
+			cin>>arr3[i];
+			sum3+=arr3[i];
+		}
+		ll i=0 ,j=0, k=0 ;
+		while(sum1!=sum2 && sum2!=sum3){
+			ll mx = max({sum1 ,sum2 , sum3});
+			if(mx==sum1 ){
+				sum1-=arr1[i];
+				i++;
+			}
+			else if(mx == sum2 ){
+				sum2-=arr2[j];
+				j++;
+			}
+			else{
+				sum3-=arr3[k];
+				k++;
+			}
+		}
+		cout<<sum1<<endl;
+	}
+
+	return 0;
+}
