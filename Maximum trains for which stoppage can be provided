@@ -1,0 +1,60 @@
+// https://www.geeksforgeeks.org/maximum-trains-stoppage-can-provided/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+
+bool cmp(pair<ll,ll> p1 , pair<ll,ll> p2){
+	return p1.s<p2.s;
+}
+
+int main(){
+	mahakal();fast;
+
+	ll t;
+	cin>>t;
+	vector<pair<ll,ll>> vec[100005];
+	while(t--){
+		ll n;
+		cin>>n;
+		for(ll i=0,a,b,c;i<n;i++){
+			cin>>a>>b>>c;
+			vec[c].pb({a,b});
+		}
+		for(ll i =0 ;i<100005;i++){
+			sort(vec[i].begin(),vec[i].end(),cmp);
+		}
+		ll ans=0;
+		for(ll i=0 ; i<100005 ;i++){
+			if(vec[i].size()==0){
+				continue;
+			}
+			ll x=0;
+			ans++;
+			for(ll j=1;j<vec[i].size();j++){
+				if(vec[i][j].f>vec[i][x].s){
+					ans++;
+					x=j;
+				}
+			}
+		}
+		cout<<ans<<endl;
+
+	}
+
+	return 0;
+}
