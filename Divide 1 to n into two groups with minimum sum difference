@@ -1,0 +1,52 @@
+// https://www.geeksforgeeks.org/divide-1-n-two-groups-minimum-sum-difference/
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+
+int main(){
+	mahakal();fast;
+
+	ll t;
+	cin>>t;
+	while(t--){
+		ll n;
+		cin>>n;
+		vector<ll> vec1 , vec2;
+		ll sum=(n*(n+1))/2;
+		ll pj=sum/2;
+		for(ll i=n ; i >=1 ;i--){
+			if(pj>=i){
+				vec1.pb(i);
+				pj-=i;
+			}
+			else{
+				vec2.pb(i);
+			}
+		}
+		cout<<vec1.size()<<endl;
+		for(auto x: vec1){
+			cout<<x<<" ";
+		}
+		cout<<endl<<vec2.size()<<endl;
+		for(auto x: vec2){
+			cout<<x<<" ";
+		}
+		cout<<endl;
+	}
+
+	return 0;
+}
