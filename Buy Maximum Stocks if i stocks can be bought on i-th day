@@ -1,0 +1,43 @@
+// https://www.geeksforgeeks.org/buy-maximum-stocks-stocks-can-bought-th-day/
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+
+int main(){
+	mahakal();fast;
+
+	ll t;
+	cin>>t;
+	while(t--){
+		ll n,k;
+		cin>>n>>k;
+		vector<pair<ll,ll>> vec;
+		for(ll i=0,a;i<n;i++){
+			cin>>a;
+			vec.pb({a,i+1});
+		}
+		sort(vec.begin(),vec.end());
+		ll ans=0;
+		for(ll i=0;i<n;i++){
+			ans+=min(vec[i].s,k/vec[i].f);
+			k-=vec[i].f*(min(vec[i].s,k/vec[i].f));
+		}
+		cout<<ans<<endl;
+	}
+
+	return 0;
+}
