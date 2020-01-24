@@ -1,0 +1,44 @@
+// https://www.geeksforgeeks.org/paper-cut-minimum-number-squares/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+
+int main(){
+	mahakal();fast;
+
+	ll t;
+	cin>>t;
+	while(t--){
+		ll a , b ;
+		cin>>a>>b;
+		ll ans=0;
+		vector<pair<ll,ll>> vec;
+		while(a>0 && b>0){
+			if(a<b){
+				swap(a,b);
+			}
+			vec.pb({a/b,b});
+			a=a%b;
+		}
+		for(auto x: vec){
+			cout<<x.f<<" "<<x.s<<endl;
+		}
+	}
+
+	return 0;
+}
