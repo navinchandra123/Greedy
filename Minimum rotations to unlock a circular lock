@@ -1,0 +1,43 @@
+// https://www.geeksforgeeks.org/minimum-rotations-unlock-circular-lock/
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+ll solve(ll a , ll b ){
+	ll la , lb;
+	ll ans=0;
+	while(a>0 || b>0){
+		la=a%10;lb=b%10;
+		ans+=min(abs(la-lb),10-abs(la-lb));
+		a/=10;b/=10;
+	}
+	return ans;
+}
+
+int main(){
+	mahakal();fast;
+
+	ll t;
+	cin>>t;
+	while(t--){
+		ll a , b ;
+		cin>>a>>b;
+		ll ans =solve(a,b);
+		cout<<ans<<endl;
+	}
+
+	return 0;
+}
